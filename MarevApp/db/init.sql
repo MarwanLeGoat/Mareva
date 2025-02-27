@@ -19,7 +19,7 @@ CREATE TABLE `Bouee` (
 CREATE TABLE `Detection` (
   `SargasseId` int NOT NULL,
   `BoueeId` int NOT NULL,
-  `HoraireDetection` Date NOT NULL
+  `HoraireDetection` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 ALTER TABLE `Pecheur` ADD FOREIGN KEY (`PecheurId`) REFERENCES `Sargasse` (`PecheurId`);
