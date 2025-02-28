@@ -1,0 +1,31 @@
+/* Conteneur principal pour la navbar */
+.navbar {
+    position: fixed; /* Position fixe pour toujours être en bas */
+    bottom: 0; /* Collé en bas de la page */
+    left: 0; /* À gauche de l'écran */
+    width: 100%; /* Prendre toute la largeur de l'écran */
+    display: flex; /* Disposition en ligne */
+    justify-content: space-around; /* Espacement égal entre les boutons */
+    background-color: #fafafa; /* Fond sombre pour la navbar */
+    padding: 1em 0; /* Espacement interne */
+    z-index: 1000; /* Assure que la navbar est au-dessus des autres éléments */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Ombre sous la navbar */
+    border-radius: 1em 1em 0 0;
+  }
+  
+  .nav-button {
+    background: none; /* Pas de fond pour les boutons */
+    border: none; /* Pas de bordure */
+    color: var(--text-color); /* Texte en blanc */
+    cursor: pointer; /* Curseur en forme de main */
+    font-size: 18px; /* Taille de l'icône */
+  }
+  
+  .nav-button:hover {
+    opacity: 0.8; /* Effet de survol */
+  }
+  
+  .nav-button:focus {
+    outline: none; /* Enlever le contour sur focus */
+  }
+  
