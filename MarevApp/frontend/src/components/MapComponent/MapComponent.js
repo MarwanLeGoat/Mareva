@@ -27,7 +27,18 @@ function MapComponent() {
         .then((res) => res.json())
         .then((data) => {
           let map = data.map((item) => {
-            return ({dateDetection:item.HoraireDetection, taille:item.TailleEstimee ,id:item.SargasseId,latitude:item.Latitude,longitude:item.Longitude})
+            const date = new Date(item.HoraireDetection);
+
+            const formattedDate = date.toLocaleString("fr-FR", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
+                timeZone: "UTC"
+            });
+
+            return ({dateDetection:formattedDate, taille:item.TailleEstimee ,id:item.SargasseId,latitude:item.Latitude,longitude:item.Longitude})
           })
           setLocations(map); // Stocker les données dans l'état
         })
