@@ -1,0 +1,20 @@
+.home-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #378EED 0%, #84B1D1 100%);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo-home {
+  width: 60%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
