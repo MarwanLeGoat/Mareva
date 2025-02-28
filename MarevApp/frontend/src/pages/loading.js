@@ -1,20 +1,26 @@
-import React,{useState} from 'react';
+import { useEffect, useState } from "react";
 import logo_home from '../img/Logo_home.svg';
 import './loading.css';
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Loading(){
 
   const navigate = useNavigate();
 
+   const [fadeOut, setFadeOut] = useState(false);
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/home"); // Redirige vers la page "/home" après 1 seconde
-    }, 2000);
+      setFadeOut(true); 
+      setTimeout(() => {
+        navigate("/home"); 
+      }, 500);
+    }, 1500); 
 
-    return () => clearTimeout(timer); // Nettoyage du timer
+    return () => clearTimeout(timer);
   }, [navigate]);
+
 
   return (
     <div className="home-container">
