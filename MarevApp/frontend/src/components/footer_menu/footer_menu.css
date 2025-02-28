@@ -2,8 +2,9 @@
 .navbar {
     position: fixed; /* Position fixe pour toujours être en bas */
     bottom: 0; /* Collé en bas de la page */
-    left: 0; /* À gauche de l'écran */
+    margin: 0 auto;
     width: 100%; /* Prendre toute la largeur de l'écran */
+    max-width: 700px;
     display: flex; /* Disposition en ligne */
     justify-content: space-around; /* Espacement égal entre les boutons */
     background-color: #fafafa; /* Fond sombre pour la navbar */
