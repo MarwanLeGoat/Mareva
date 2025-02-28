@@ -9,7 +9,7 @@ import { PiPathBold } from "react-icons/pi";
 import { RiUserLine } from "react-icons/ri";
 import { PiCompassRose } from "react-icons/pi";
 
-const icon_size = 30;
+const icon_size = 24;
 
 const Navbar = ({toggleDrawer}) => {
   // Fonctions de base pour chaque bouton (modifiez selon vos besoins)
