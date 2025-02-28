@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require("express");
 const dotenv = require("dotenv");
 const pool = require("./db");
@@ -7,6 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware JSON
 app.use(express.json());
+app.use(cors());
 
 // Route de test
 app.get("/", (req, res) => {
