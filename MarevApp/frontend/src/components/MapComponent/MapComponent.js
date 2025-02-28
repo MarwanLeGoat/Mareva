@@ -17,9 +17,24 @@ const customIcon = L.icon({
   popupAnchor: [0, -35],
 });
 
+ 
+
 
 function MapComponent() {
   const [locations, setLocations] = useState([]);
+  const [bouees, setBouees] = useState([]);
+    
+  useEffect(()=>{
+    fetch("http://localhost/api/bouees")
+      .then((res)=>res.json())
+      .then((data)=>{
+        let map = data.map((item) => {
+          return ({id:item.id, latitude:item.Latitude, longitude:item.Longitude});
+        })
+        setBouees(map);
+      })
+
+  })
 
     // Fonction pour récupérer les données
     useEffect(() => {
@@ -38,7 +53,7 @@ function MapComponent() {
                 timeZone: "UTC"
             });
 
-            return ({dateDetection:formattedDate, taille:item.TailleEstimee ,id:item.SargasseId,latitude:item.Latitude,longitude:item.Longitude})
+            return ({dateDetection:formattedDate, taille:item.TailleEstimee ,id:item.SargasseId,latitude:item.Latitude+0.01,longitude:item.Longitude})
           })
           setLocations(map); // Stocker les données dans l'état
         })
@@ -70,6 +85,12 @@ function MapComponent() {
               <button className="map-popup-button">Itinéraire</button>
             </div>          
           </Popup>
+        </Marker>
+      ))}
+
+
+      {bouees.map((loc) => (
+        <Marker key={loc.id} position={[loc.latitude, loc.longitude]} icon={customIcon}>
         </Marker>
       ))}
 
