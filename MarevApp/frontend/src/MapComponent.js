@@ -2,35 +2,36 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { FaMapMarkerAlt } from "react-icons/fa"; // Import d'une icône React
+import sargassicon from "./img/Map_pin.svg";
 
-// Exemple : coordonnées de Paris
-const centerParis = [48.8566, 2.3522];
+// Coordonnées de la Guadeloupe
+const centerGuadeloupe = [16.265, -61.551];
 
-// Icône personnalisée (optionnel)
-const customIcon = new L.Icon({
-  iconUrl: "https://leafletjs.com/examples/custom-icons/leaf-red.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34]
+//on va customiser l'icone
+const customIcon = L.icon({
+  iconUrl: sargassicon, 
+  iconSize: [80, 80],
+  iconAnchor: [40,80],
+  popupAnchor: [0, -35],
 });
+
 
 function MapComponent() {
   return (
     <MapContainer
-      center={centerParis}
-      zoom={12}
+      center={centerGuadeloupe}
+      zoom={10}
       scrollWheelZoom={true}
-      style={{ height: "500px", width: "100%" }}
+      style={{ height: "100%", width: "100%" }}
     >
       {/* Couche de tuiles OpenStreetMap */}
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-
-      {/* Marqueur (facultatif) */}
-      <Marker position={centerParis} icon={customIcon}>
-        <Popup>Bonjour Paris !</Popup>
+      <Marker position={centerGuadeloupe} icon={customIcon}>
+        <Popup>Je suis le centre de la Guadeloupe</Popup>
       </Marker>
     </MapContainer>
   );
