@@ -1,0 +1,19 @@
+.map-popup-button{
+  background: linear-gradient(145deg, #378EED 0%, #84B1D1 100%);
+  padding : .5em 1em ;
+  border:none;
+  border-radius: 1em;
+  color :white;
+  font-weight: bolder;
+  width:100%;
+}
+
+.map-popup p {
+  margin:0;
+  padding:.2em;
+}
+
+.map-popup{
+  display: flex;
+  flex-direction:column;
+}
