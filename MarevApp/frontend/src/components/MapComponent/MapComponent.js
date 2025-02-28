@@ -5,7 +5,7 @@ import L from "leaflet";
 import "./MapComponent.css"
 
 import sargassicon from "../../img/Map_pin.svg";
-
+import boueeicon from "../../img/Bouee.svg";
 // Coordonnées de la Guadeloupe
 const centerParis = [16.265, -61.551];
 
@@ -13,11 +13,16 @@ const centerParis = [16.265, -61.551];
 const customIcon = L.icon({
   iconUrl: sargassicon, 
   iconSize: [80, 80],
-  iconAnchor: [40,80],
-  popupAnchor: [0, -35],
+  iconAnchor: [45,60],
+  popupAnchor: [0, -70],
 });
 
- 
+ const boueeIcon = L.icon({
+  iconUrl: boueeicon, 
+  iconSize: [50, 50],
+  iconAnchor: [25,25],
+  popupAnchor: [0, -35],
+});
 
 
 function MapComponent() {
@@ -80,7 +85,7 @@ function MapComponent() {
 
 
       {bouees.map((loc) => (
-        <Marker key={loc.id} position={[loc.latitude, loc.longitude]} zoom={1} interactive={false} icon={customIcon}>
+        <Marker key={loc.id} position={[loc.latitude, loc.longitude]} zoom={1} interactive={false} icon={boueeIcon}>
         </Marker>
       ))}
 
