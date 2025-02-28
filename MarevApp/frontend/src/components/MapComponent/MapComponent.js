@@ -76,8 +76,16 @@ function MapComponent() {
     url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
     attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
     />
+      
+
+
+      {bouees.map((loc) => (
+        <Marker key={loc.id} position={[loc.latitude, loc.longitude]} zoom={1} interactive={false} icon={customIcon}>
+        </Marker>
+      ))}
+
       {locations.map((loc) => (
-        <Marker key={loc.id} position={[loc.latitude, loc.longitude]} icon={customIcon}>
+        <Marker key={loc.id} position={[loc.latitude, loc.longitude]} zoom={1} icon={customIcon}>
           <Popup >
             <div className="map-popup">
               <p><strong>Taille estimée</strong>: {loc.taille}m²</p>
@@ -85,12 +93,6 @@ function MapComponent() {
               <button className="map-popup-button">Itinéraire</button>
             </div>          
           </Popup>
-        </Marker>
-      ))}
-
-
-      {bouees.map((loc) => (
-        <Marker key={loc.id} position={[loc.latitude, loc.longitude]} icon={customIcon}>
         </Marker>
       ))}
 
