@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `Detection` (
   `HoraireDetection` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-ALTER TABLE `Pecheur` ADD FOREIGN KEY (`PecheurId`) REFERENCES `Sargasse` (`PecheurId`);
+ALTER TABLE `Sargasse` ADD FOREIGN KEY (`PecheurId`) REFERENCES `Pecheur` (`PecheurId`);
 
 ALTER TABLE `Detection` ADD FOREIGN KEY (`SargasseId`) REFERENCES `Sargasse` (`SargasseId`);
 
