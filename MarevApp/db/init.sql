@@ -5,8 +5,7 @@ CREATE TABLE IF NOT EXISTS `Pecheur` (
 
 CREATE TABLE IF NOT EXISTS `Sargasse` (
   `SargasseId` int PRIMARY KEY AUTO_INCREMENT,
-  `DetectionId` int NOT NULL,
-  `PecheurId` int NOT NULL,
+  `PecheurId` int,
   `TailleEstimee` int
 );
 

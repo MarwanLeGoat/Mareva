@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(cors());
 
 
-app.post('/sargasse', (req, res) => {
-  const { PecheurId, BoueeId, TailleEstimee } = req.body;
+app.post('/detection', (req, res) => {
+  const { BoueeId, TailleEstimee } = req.body;
 
   // Vérifier que BoueeId et TailleEstimee sont présents
   if (!BoueeId || !TailleEstimee) {
@@ -20,8 +20,8 @@ app.post('/sargasse', (req, res) => {
   }
 
   // Requête pour insérer une entrée dans la table Sargasse
-  const sargasseQuery = 'INSERT INTO Sargasse (PecheurId, BoueeId, TailleEstimee) VALUES (?, ?, ?)';
-  pool.query(sargasseQuery, [PecheurId || null, BoueeId, TailleEstimee], (err, results) => {
+  const sargasseQuery = 'INSERT INTO Sargasse (TailleEstimee) VALUES ( ?)';
+  pool.query(sargasseQuery, [TailleEstimee], (err, results) => {
     if (err) {
       console.error('Erreur d\'insertion dans Sargasse:', err);
       return res.status(500).json({ error: 'Erreur d\'insertion dans Sargasse.' });
