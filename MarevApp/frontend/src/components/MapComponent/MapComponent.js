@@ -70,10 +70,10 @@ function MapComponent() {
 
     // Fonction pour récupérer les données
     useEffect(() => {
-      fetch("/api/detections/dernieres/5") // Remplace par ton API
+      fetch("/api/detections") // Remplace par ton API
         .then((res) => res.json())
         .then((data) => {
-          let map = data.map((item) => {
+          let map = data.detections.map((item) => {
             const date = new Date(item.HoraireDetection);
 
             const formattedDate = date.toLocaleString("fr-FR", {

@@ -11,6 +11,64 @@ app.use(express.json());
 app.use(cors());
 
 
+app.post('/sargasse/:id/pecheur', (req, res) => {
+  const sargasseId = req.params.id; // ID de la sargasse
+  const { PecheurId } = req.body;   // ID du pêcheur à lier
+
+  // Vérifier que l'ID du pêcheur est fourni
+  if (!PecheurId) {
+    return res.status(400).json({ error: "PecheurId est requis" });
+  }
+
+  // Vérifier que la sargasse existe
+  const checkSargasseQuery = 'SELECT * FROM Sargasse WHERE SargasseId = ?';
+  pool.query(checkSargasseQuery, [sargasseId], (err, results) => {
+    if (err) {
+      console.error("Erreur lors de la vérification de la sargasse:", err);
+      return res.status(500).json({ error: "Erreur lors de la vérification de la sargasse" });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ error: "Aucune sargasse trouvée avec cet ID" });
+    }
+
+    // Vérifier si le pêcheur existe
+    const checkPecheurQuery = 'SELECT * FROM Pecheur WHERE PecheurId = ?';
+    pool.query(checkPecheurQuery, [PecheurId], (err, results) => {
+      if (err) {
+        console.error("Erreur lors de la vérification du pêcheur:", err);
+        return res.status(500).json({ error: "Erreur lors de la vérification du pêcheur" });
+      }
+
+      if (results.length === 0) {
+        return res.status(404).json({ error: "Aucun pêcheur trouvé avec cet ID" });
+      }
+
+      // Ajouter le pêcheur à la sargasse
+      const updateSargasseQuery = `
+        UPDATE Sargasse
+        SET PecheurId = ?
+        WHERE SargasseId = ?`;
+
+      pool.query(updateSargasseQuery, [PecheurId, sargasseId], (err, result) => {
+        if (err) {
+          console.error("Erreur lors de la mise à jour de la sargasse:", err);
+          return res.status(500).json({ error: "Erreur lors de l'ajout du pêcheur à la sargasse" });
+        }
+
+        // Si l'ajout a réussi
+        res.status(200).json({
+          message: "Pêcheur ajouté à la sargasse avec succès",
+          SargasseId: sargasseId,
+          PecheurId: PecheurId,
+        });
+      });
+    });
+  });
+});
+
+
+
 app.post('/detection', (req, res) => {
   const { BoueeId, TailleEstimee } = req.body;
 
