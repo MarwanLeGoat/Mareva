@@ -39,7 +39,7 @@ function MapComponent() {
         setBouees(map);
       })
 
-  })
+  },[])
 
     // Fonction pour récupérer les données
     useEffect(() => {
