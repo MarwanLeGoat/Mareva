@@ -9,6 +9,8 @@ import boueeicon from "../../img/Bouee.svg";
 // Coordonnées de la Guadeloupe
 const centerParis = [16.265, -61.551];
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 //on va customiser l'icone
 const customIcon = L.icon({
   iconUrl: sargassicon, 
@@ -30,7 +32,7 @@ function MapComponent() {
   const [bouees, setBouees] = useState([]);
     
   useEffect(()=>{
-    fetch("http://localhost/api/bouees")
+    fetch("/api/bouees")
       .then((res)=>res.json())
       .then((data)=>{
         let map = data.map((item) => {
@@ -43,7 +45,7 @@ function MapComponent() {
 
     // Fonction pour récupérer les données
     useEffect(() => {
-      fetch("http://localhost/api/detections/dernieres/5") // Remplace par ton API
+      fetch("/api/detections/dernieres/5") // Remplace par ton API
         .then((res) => res.json())
         .then((data) => {
           let map = data.map((item) => {

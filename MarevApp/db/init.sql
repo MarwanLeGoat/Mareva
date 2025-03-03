@@ -27,3 +27,6 @@ ALTER TABLE `Pecheur` ADD FOREIGN KEY (`PecheurId`) REFERENCES `Sargasse` (`Pech
 ALTER TABLE `Detection` ADD FOREIGN KEY (`SargasseId`) REFERENCES `Sargasse` (`SargasseId`);
 
 ALTER TABLE `Detection` ADD FOREIGN KEY (`BoueeId`) REFERENCES `Bouee` (`BoueeId`);
+
+
+
