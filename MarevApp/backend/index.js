@@ -10,10 +10,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-// Route de test
-app.get("/", (req, res) => {
-    res.json({ message: "Hello from Express!" });
-});
+
 
 app.get("/sargasses", (req, res) => {
   pool.query("SELECT * FROM Sargasse",(err, results) => {
