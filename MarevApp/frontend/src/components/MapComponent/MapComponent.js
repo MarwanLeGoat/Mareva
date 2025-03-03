@@ -92,7 +92,24 @@ function MapComponent() {
         .catch((error) => console.error("Erreur API :", error));
     }, []);
 
+  const HandleClick = (id) => {
+    const data = {
+      "PecheurId" : 1
+    }
 
+    fetch(`/api/detection/${id}/pecheur`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',  // Indiquer que l'on envoie des données JSON
+        },
+        body: JSON.stringify(data),  // Convertir l'objet en JSON
+      })
+    .then((res)=>res.json())
+    .then((data)=>{
+        console.log(data);
+      })
+  
+  };
 
 
   return (
@@ -120,7 +137,7 @@ function MapComponent() {
             <div className="map-popup">
               <p><strong>Taille estimée</strong>: {loc.taille}m²</p>
               <p><strong>Horaire de Detection</strong>: {loc.dateDetection}</p>
-              <button className="map-popup-button">Itinéraire</button>
+              <button className="map-popup-button" onClick={()=>{HandleClick(loc.id)}}>Récupérer</button>
             </div>          
           </Popup>
         </Marker>

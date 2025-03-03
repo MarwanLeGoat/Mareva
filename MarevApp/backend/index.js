@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 
-app.post('/sargasse/:id/pecheur', (req, res) => {
+app.post('/detection/:id/pecheur', (req, res) => {
   const sargasseId = req.params.id; // ID de la sargasse
   const { PecheurId } = req.body;   // ID du pêcheur à lier
 
