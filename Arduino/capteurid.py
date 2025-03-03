@@ -8,7 +8,7 @@ url="http://localhost/api/detection"
 
 data={"BoueeId":2,"TailleEstimee":1}
 
-screenState = 1  # On démarre à l'écran 1
+screenState = 0  # On démarre à l'écran 1
 
 # Pseudocode pour l'affichage
 def afficherEcran(etat):
@@ -26,10 +26,16 @@ def afficherEcran(etat):
 PORT = "COM4"
 BAUDRATE = 9600
 
+def actualizeSensor(dicoEtats, capteur, etat):
+    dicoEtats[capteur] = etat
+
+
 try:
     ser = serial.Serial(PORT, BAUDRATE, timeout=1)
     time.sleep(2)
     afficherEcran(screenState)
+    
+    dicoEtats = {}
 
     while True:
         # Lire les événements capteurs
@@ -42,12 +48,23 @@ try:
                 if len(parts) == 2:
                     capteur, etat = parts  # ex: capteur="Capteur_1", etat="ACTIVÉ"
                     # Extraire l'index
+
                     indexStr = capteur.split("_")[1]  # "1"
                     indexCapteur = int(indexStr)
 
+                    dicoEtats[indexCapteur] = etat
+                    
+
+                    # Etat initial
+                    if screenState == 0 :
+                        #On attend que toutes les pièces soient bine placées
+                        if dicoEtats[0]=="ACTIVÉ" and dicoEtats[3] == "ACTIVÉ" and dicoEtats[4] =="ACTIVÉ":
+                            screenState = 1
+                    
+
                     # Logique de changement d'écran
                     # Écran 1 -> 2 => si (screenState=1 ET capteur=0 ACTIVÉ)
-                    if screenState == 1 and indexCapteur == 0 and etat == "ACTIVÉ":
+                    if screenState == 1 and dicoEtats[1]=="ACTIVÉ":
                         screenState = 2
                         afficherEcran(screenState)
                         # Ex: allumer la LED_BOUÉE
@@ -55,21 +72,23 @@ try:
                         #on va effectuer une reqûete Post pour ajouter la sargasse au niveau de la bouée
                         response=requests.post(url,json=data)
                         print(response)
+
+                        
                     # Écran 2 -> 3 => si (screenState=2 ET capteur=1 ACTIVÉ)
-                    if screenState == 2 and indexCapteur == 1 and etat == "ACTIVÉ":
+                    if screenState == 2 and dicoEtats[2]=="ACTIVÉ":
                         screenState = 3
                         afficherEcran(screenState)
                         # on éteint la bouée peut-être, c’est toi qui décide
                         # ser.write(b"BOUEE_OFF\n")
 
                     # Écran 3 -> 4 => si (screenState=3 ET capteur=3 ACTIVÉ)
-                    if screenState == 3 and indexCapteur == 3 and etat == "ACTIVÉ":
+                    if screenState == 3 and dicoEtats[3]=="ACTIVÉ":
                         screenState = 4
                         afficherEcran(screenState)
                         # allumer LED du camion ? ser.write(b"CAMION_ON\n")
 
                     # Écran 4 -> 5 => si (screenState=4 ET capteur=5 ACTIVÉ)
-                    if screenState == 4 and indexCapteur == 5 and etat == "ACTIVÉ":
+                    if screenState == 4 and dicoEtats[5] == "ACTIVÉ":
                         screenState = 5
                         afficherEcran(screenState)
                         # on peut éteindre la LED camion si tu veux
