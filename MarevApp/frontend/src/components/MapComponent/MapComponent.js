@@ -12,12 +12,7 @@ const centerParis = [16.265, -61.551];
 const apiUrl = process.env.REACT_APP_API_URL;
 
 //on va customiser l'icone
-const customIcon = L.icon({
-  iconUrl: sargassicon, 
-  iconSize: [80, 80],
-  iconAnchor: [45,60],
-  popupAnchor: [0, -70],
-});
+
 
  const boueeIcon = L.icon({
   iconUrl: boueeicon, 
@@ -30,7 +25,37 @@ const customIcon = L.icon({
 function MapComponent() {
   const [locations, setLocations] = useState([]);
   const [bouees, setBouees] = useState([]);
+  
+    const [size, setSize] = useState(80); // Taille initiale
+  const [growing, setGrowing] = useState(true); // Direction de l'animation
+  const speedfactor = 0.1;
+
+  useEffect(() => {
+    let animationFrame;
+    const animate = () => {
+      setSize((prevSize) => {
+        let newSize = growing ? prevSize + speedfactor : prevSize - speedfactor; // Change progressivement
+        if (newSize >= 80) setGrowing(false); // Inverse quand trop grand
+        if (newSize <= 70) setGrowing(true); // Inverse quand trop petit
+        return newSize;
+      });
+
+      animationFrame = requestAnimationFrame(animate); // Continue l'animation
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrame); // Nettoyage à la fin
+  }, [growing]);
+
     
+  const customIcon = L.icon({
+  iconUrl: sargassicon, 
+  iconSize: [size, size],
+  iconAnchor: [size/2,size],
+  popupAnchor: [0, -70],
+});
+
   useEffect(()=>{
     fetch("/api/bouees")
       .then((res)=>res.json())
@@ -90,7 +115,7 @@ function MapComponent() {
       ))}
 
       {locations.map((loc) => (
-        <Marker key={loc.id} position={[loc.latitude, loc.longitude]} zoom={1} icon={customIcon}>
+        <Marker  key={loc.id} position={[loc.latitude, loc.longitude]} zoom={1} icon={customIcon}>
           <Popup >
             <div className="map-popup">
               <p><strong>Taille estimée</strong>: {loc.taille}m²</p>
