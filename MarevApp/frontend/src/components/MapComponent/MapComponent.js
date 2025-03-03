@@ -73,7 +73,8 @@ function MapComponent() {
   return (
     <MapContainer
       center={centerParis}
-      zoom={12}
+      zoom={10}
+      maxBounds={[[15.707489,-62.105152],[16.683383,-60.657703]]}
       scrollWheelZoom={true}
       style={{ height: "100%", width: "100%" }}
     >
