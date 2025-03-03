@@ -68,29 +68,38 @@ function MapComponent() {
 
   },[])
 
-    // Fonction pour récupérer les données
-    useEffect(() => {
-      fetch("/api/detections") // Remplace par ton API
-        .then((res) => res.json())
-        .then((data) => {
-          let map = data.detections.map((item) => {
-            const date = new Date(item.HoraireDetection);
+  const fetchLocations = () => {
+    fetch("/api/detections") // Remplace par ton API
+      .then((res) => res.json())
+      .then((data) => {
+        let map = data.detections.map((item) => {
+          const date = new Date(item.HoraireDetection);
 
-            const formattedDate = date.toLocaleString("fr-FR", {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-                hour: "2-digit",
-                minute: "2-digit",
-                timeZone: "UTC"
-            });
+          const formattedDate = date.toLocaleString("fr-FR", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            timeZone: "UTC",
+          });
 
-            return ({dateDetection:formattedDate, taille:item.TailleEstimee ,id:item.SargasseId,latitude:item.Latitude+0.01,longitude:item.Longitude})
-          })
-          setLocations(map); // Stocker les données dans l'état
-        })
-        .catch((error) => console.error("Erreur API :", error));
-    }, []);
+          return {
+            dateDetection: formattedDate,
+            taille: item.TailleEstimee,
+            id: item.SargasseId,
+            latitude: item.Latitude + 0.01,
+            longitude: item.Longitude,
+          };
+        });
+        setLocations(map); // Mettre à jour les données
+      })
+      .catch((error) => console.error("Erreur API :", error));
+  };
+
+  useEffect(() => {
+    fetchLocations(); // Charger les données initiales lors du premier rendu
+  }, []);
 
   const HandleClick = (id) => {
     const data = {
@@ -107,6 +116,7 @@ function MapComponent() {
     .then((res)=>res.json())
     .then((data)=>{
         console.log(data);
+        fetchLocations();
       })
   
   };
