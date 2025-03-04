@@ -9,6 +9,7 @@ class Etat3 extends State {
 
   void onEnter() {
     serialHandler.sendCommand("BOUEE_OFF");
+    apiHandler.deleteSargasse();
   }
 
   void update() {

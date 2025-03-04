@@ -3,9 +3,26 @@ import http.requests.*;
 
 class ApiHandler {
   String baseUrl;
+  int sargasseId;
 
   ApiHandler(String url) {
     this.baseUrl = url;
+  }
+  
+  boolean deleteSargasse(){
+    try {
+      DeleteRequest delete = new DeleteRequest(baseUrl + "/supprimer-detection/" + sargasseId);
+      delete.send();
+
+      println("[DELETE] Contenu de la réponse : " + delete.getContent());
+
+      return true; 
+    } catch (Exception e) {
+      println("[DELETE] Exception : " + e.getMessage());
+      return false; // Retourne faux en cas d'échec
+    }
+ 
+
   }
 
   int postDetection(int boueeId, int taille) {
@@ -22,6 +39,7 @@ class ApiHandler {
       if (responseCode == 200) {
         JSONObject json = parseJSONObject(post.getContent());
         if (json != null && json.hasKey("sargasseId")) {
+          sargasseId = json.getInt("sargasseId");
           return json.getInt("sargasseId");
         }
       } else {
