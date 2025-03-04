@@ -1,6 +1,7 @@
 class Etat2 extends State {
   int sargasseId = -1;
-
+  int lastRequestTime = 0;  // Dernière fois où la requête a été envoyée.
+  
   Etat2(StateMachine sm, SerialHandler sh, ApiHandler ah) {
     super(sm, sh, ah);
   }

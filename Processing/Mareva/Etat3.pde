@@ -11,7 +11,7 @@ class Etat3 extends State {
     background(200, 200, 255);
     fill(0);
     textSize(32);
-    text("Écran 3 - Le pêcheur reçoit l’alerte", 100, 100);
+    text("Écran 3 - Tu as récupère la sargasse", 100, 100);
 
     // Si capteur 3 activé -> passe à état 4
     if (serialHandler.isActivated(3)) {

@@ -11,7 +11,7 @@ class Etat4 extends State {
     background(255, 200, 255);
     fill(0);
     textSize(32);
-    text("Écran 4 - Transformation des sargasses", 100, 100);
+    text("Écran 4 - Il faut emmener les sargasses vers l'usine de traitement", 100, 100);
 
     // Si capteur 5 activé -> passe à état 5
     if (serialHandler.isActivated(5)) {

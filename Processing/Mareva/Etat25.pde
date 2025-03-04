@@ -1,5 +1,5 @@
 class Etat25 extends State {
-  Etat3(StateMachine sm, SerialHandler sh, ApiHandler ah) {
+  Etat25(StateMachine sm, SerialHandler sh, ApiHandler ah) {
     super(sm, sh, ah);
   }
 
