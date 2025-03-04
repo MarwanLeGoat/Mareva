@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -127,6 +127,7 @@ function MapComponent() {
       })
     .then((res)=>res.json())
     .then((data)=>{
+        addNotification("Sargasse réservée","success");
         console.log(data);
         fetchLocations();
       })
