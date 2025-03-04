@@ -3,9 +3,12 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./MapComponent.css"
+import { useNotification } from '../NotificationProvider/NotificationProvider';
+
 
 import sargassicon from "../../img/Map_pin.svg";
 import boueeicon from "../../img/Bouee.svg";
+import sargassValidIcon from "../../img/Map_pin_valid.svg";
 // Coordonnées de la Guadeloupe
 const centerParis = [16.265, -61.551];
 
@@ -21,8 +24,16 @@ const apiUrl = process.env.REACT_APP_API_URL;
   popupAnchor: [0, -35],
 });
 
+const validIcon = L.icon({
+  iconUrl: sargassValidIcon,
+  iconSize: [80,80],
+  iconAnchor:[40,80],
+  popupAnchor: [0,-70],
+})
+
 
 function MapComponent() {
+          const { addNotification } = useNotification();
   const [locations, setLocations] = useState([]);
   const [bouees, setBouees] = useState([]);
   
@@ -85,6 +96,7 @@ function MapComponent() {
           });
 
           return {
+            pecheur: item.PecheurNom,
             dateDetection: formattedDate,
             taille: item.TailleEstimee,
             id: item.SargasseId,
@@ -140,14 +152,18 @@ function MapComponent() {
         <Marker key={loc.id} position={[loc.latitude, loc.longitude]} zoom={1} interactive={false} icon={boueeIcon}>
         </Marker>
       ))}
-
+      {console.log(locations)}
       {locations.map((loc) => (
-        <Marker  key={loc.id} position={[loc.latitude, loc.longitude]} zoom={1} icon={customIcon}>
+        <Marker  key={loc.id} position={[loc.latitude, loc.longitude]} zoom={1} icon={loc.pecheur ? validIcon : customIcon}>
           <Popup >
             <div className="map-popup">
               <p><strong>Taille estimée</strong>: {loc.taille}m²</p>
               <p><strong>Horaire de Detection</strong>: {loc.dateDetection}</p>
-              <button className="map-popup-button" onClick={()=>{HandleClick(loc.id)}}>Récupérer</button>
+              <p> {loc.latitude}; {loc.longitude}</p>
+              {loc.pecheur ? 
+                <p>Cette bouée vous est réservée</p> : 
+                <button className="map-popup-button" onClick={()=>{HandleClick(loc.id)}}>Récupérer</button>
+              }
             </div>          
           </Popup>
         </Marker>
