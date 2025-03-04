@@ -44,10 +44,10 @@ try:
             ligne = ser.readline().decode().strip()
             if ligne:
                 print(f"[Arduino] {ligne}")  # debug
-                # ligne = "Capteur_1 ACTIVÉ" par ex
+                # ligne = "Capteur_1 ACTIVE" par ex
                 parts = ligne.split()
                 if len(parts) == 2:
-                    capteur, etat = parts  # ex: capteur="Capteur_1", etat="ACTIVÉ"
+                    capteur, etat = parts  # ex: capteur="Capteur_1", etat="ACTIVE"
                     # Extraire l'index
 
                     indexStr = capteur.split("_")[1]  # "1"
@@ -59,14 +59,14 @@ try:
                     # Etat initial
                     if screenState == 0 :
                         #On attend que toutes les pièces soient bine placées
-                        if dicoEtats.get(0)=="ACTIVÉ" and dicoEtats.get(4) == "ACTIVÉ" and dicoEtats.get(3) =="ACTIVÉ":
+                        if dicoEtats.get(0)=="ACTIVE" and dicoEtats.get(4) == "ACTIVE" and dicoEtats.get(3) =="ACTIVE":
                             screenState = 1
                             print("==== Écran 0 - Mise en situation ====")
                     
 
                     # Logique de changement d'écran
-                    # Écran 1 -> 2 => si (screenState=1 ET capteur=0 ACTIVÉ)
-                    if screenState == 1 and dicoEtats.get(1)=="ACTIVÉ":
+                    # Écran 1 -> 2 => si (screenState=1 ET capteur=0 ACTIVE)
+                    if screenState == 1 and dicoEtats.get(1)=="ACTIVE":
                         screenState = 2
                         afficherEcran(screenState)
                         # Ex: allumer la LED_BOUÉE
@@ -78,8 +78,8 @@ try:
                         print(sid)
                         
                         
-                    # Écran 2 -> 3 => si (screenState=2 ET capteur=1 ACTIVÉ)
-                    if screenState == 2 and dicoEtats.get(2)=="ACTIVÉ" :
+                    # Écran 2 -> 3 => si (screenState=2 ET capteur=1 ACTIVE)
+                    if screenState == 2 and dicoEtats.get(2)=="ACTIVE" :
                         response=requests.get(url+"/"+str(sid))
                         peche=response.json()["detection"]["PecheurNom"]
                         if not peche:
@@ -88,15 +88,15 @@ try:
                             # on éteint la bouée peut-être, c’est toi qui décide
                             ser.write(b"BOUEE_OFF\n")
 
-                    # Écran 3 -> 4 => si (screenState=3 ET capteur=3 ACTIVÉ)
-                    if screenState == 3 and dicoEtats.get(3)=="ACTIVÉ":
+                    # Écran 3 -> 4 => si (screenState=3 ET capteur=3 ACTIVE)
+                    if screenState == 3 and dicoEtats.get(3)=="ACTIVE":
                         screenState = 4
                         afficherEcran(screenState)
                         # allumer LED du camion ? 
                         ser.write(b"CAMION_ON\n")
 
-                    # Écran 4 -> 5 => si (screenState=4 ET capteur=5 ACTIVÉ)
-                    if screenState == 4 and dicoEtats.get(5) == "ACTIVÉ":
+                    # Écran 4 -> 5 => si (screenState=4 ET capteur=5 ACTIVE)
+                    if screenState == 4 and dicoEtats.get(5) == "ACTIVE":
                         screenState = 5
                         afficherEcran(screenState)
                         # on peut éteindre la LED camion si tu veux

@@ -1,9 +1,16 @@
+import processing.sound.*;
+
 class Etat2 extends State {
+  SoundFile file;
+
   int sargasseId = -1;
   int lastRequestTime = 0;  // Dernière fois où la requête a été envoyée.
   
-  Etat2(StateMachine sm, SerialHandler sh, ApiHandler ah) {
-    super(sm, sh, ah);
+  Etat2(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
+    super(sm, sh, ah,p);
+    // Load a soundfile from the /data folder of the sketch and play it back
+    file = new SoundFile(p, "Etat1.mp3");
+    file.play();
   }
 
   void onEnter() {
@@ -22,7 +29,7 @@ class Etat2 extends State {
       lastRequestTime = currentTime;
     // Si capteur 2 activé -> passe à état 3
       if (!apiHandler.checkPecheur(sargasseId)) {
-        stateMachine.setState(new Etat25(stateMachine, serialHandler, apiHandler));
+        stateMachine.setState(new Etat25(stateMachine, serialHandler, apiHandler,p));
       }
     }
   }

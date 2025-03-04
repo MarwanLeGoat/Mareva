@@ -1,6 +1,10 @@
+import processing.sound.*;
+
 class Etat25 extends State {
-  Etat25(StateMachine sm, SerialHandler sh, ApiHandler ah) {
-    super(sm, sh, ah);
+  SoundFile file;
+
+  Etat25(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
+    super(sm, sh, ah,p);
   }
 
   void onEnter() {
@@ -15,7 +19,7 @@ class Etat25 extends State {
 
     // Si capteur 3 activé -> passe à état 4
     if (serialHandler.isActivated(2)) {
-      stateMachine.setState(new Etat3(stateMachine, serialHandler, apiHandler));
+      stateMachine.setState(new Etat3(stateMachine, serialHandler, apiHandler,p));
     }
   }
 }

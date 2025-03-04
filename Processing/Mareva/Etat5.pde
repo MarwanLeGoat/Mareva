@@ -1,6 +1,10 @@
+import processing.sound.*;
+
 class Etat5 extends State {
-  Etat5(StateMachine sm, SerialHandler sh, ApiHandler ah) {
-    super(sm, sh, ah);
+  SoundFile file;
+
+  Etat5(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
+    super(sm, sh, ah,p);
   }
 
   void onEnter() {
