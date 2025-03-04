@@ -110,7 +110,9 @@ function MapComponent() {
   };
 
   useEffect(() => {
-    fetchLocations(); // Charger les données initiales lors du premier rendu
+    const id = setInterval(() => {
+      fetchLocations(); // Charger les données initiales lors du premier rendu
+    }, 5000);
   }, []);
 
   const HandleClick = (id) => {
