@@ -6,7 +6,6 @@ void setup() {
   fullScreen(P2D);  // Mode plein écran avec accélération GPU
   stateMachine = new StateMachine();
   apiHandler = new ApiHandler("http://localhost/api/detection");
-  apiHandler.postDetection(1,100);
   serialHandler = new SerialHandler(this, "COM4", 9600);
 
   stateMachine.setState(new Etat1(stateMachine, serialHandler, apiHandler)); // Écran 1
@@ -14,4 +13,9 @@ void setup() {
 
 void draw() {
   stateMachine.update();
+}
+
+
+void serialEvent(Serial p){
+  serialHandler.processSerialData(p.readStringUntil('\n'));
 }

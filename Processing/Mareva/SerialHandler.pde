@@ -6,11 +6,12 @@ class SerialHandler {
 
   SerialHandler(PApplet parent, String port, int baudRate) {
     serial = new Serial(parent, port, baudRate);
-    serial.bufferUntil('\n');
+    serial.bufferUntil('\n');  
+    println(port + baudRate);
   }
-
-  void serialEvent(Serial p) {
-    String line = p.readStringUntil('\n');
+ 
+  void processSerialData(String line) {
+    
     if (line != null) {
       line = trim(line);
       println("[Arduino] " + line);
