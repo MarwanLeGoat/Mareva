@@ -14,13 +14,16 @@ class Etat2 extends State {
     background(200, 255, 200);
     fill(0);
     textSize(32);
-    text("Écran 2 - Détection par la bouée", 100, 100);
+    text("Écran 2 - Détection par la bouée, le pêcheur reçoit l'alerte", 100, 100);
 
+    int currentTime = millis();
+  if (currentTime - lastRequestTime > 500) {
+      lastRequestTime = currentTime;
     // Si capteur 2 activé -> passe à état 3
-    if (serialHandler.isActivated(2)) {
       if (!apiHandler.checkPecheur(sargasseId)) {
-        stateMachine.setState(new Etat3(stateMachine, serialHandler, apiHandler));
+        stateMachine.setState(new Etat25(stateMachine, serialHandler, apiHandler));
       }
     }
   }
+  
 }
