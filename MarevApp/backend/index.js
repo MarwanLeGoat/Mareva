@@ -11,6 +11,27 @@ app.use(express.json());
 app.use(cors());
 
 
+app.delete("/detection/:id", (req,res)=>{
+    const detectionId = req.params.id;
+  const deleteQuery = "DELETE FROM Detection WHERE SargasseId=? ";
+  pool.query(deleteQuery,[detectionId], (err, results)=>{
+    if (err){
+      console.error("Erreur lors de la suppresion de la detection");
+      return res.status(500).json({error : "Erreur lors de la suppresion de la detection"});
+    }
+    const deleteSQuery = "DELETE FROM Sargasse WHERE SargasseId=?";
+    pool.query(deleteSQuery,[detectionId], (err,results)=>{
+      if (err){
+        console.error("Erreur lors de la suppresion de la detection");
+        return res.status(500).json({error : "Erreur lors de la suppresion de la detection"});
+      }
+      return res.status(200).json({message:"Suppression réussie!"});
+
+    })
+  })
+    
+})
+
 app.post('/detection/:id/pecheur', (req, res) => {
   const sargasseId = req.params.id; // ID de la sargasse
   const { PecheurId } = req.body;   // ID du pêcheur à lier
