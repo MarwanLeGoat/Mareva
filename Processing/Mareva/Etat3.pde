@@ -2,9 +2,12 @@ import processing.sound.*;
 
 class Etat3 extends State {
   SoundFile file;
+  PImage img;
 
   Etat3(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
     super(sm, sh, ah,p);
+    img=loadImage("Etat3.jpg");
+
   }
 
   void onEnter() {
@@ -13,7 +16,7 @@ class Etat3 extends State {
   }
 
   void update() {
-    background(200, 200, 255);
+    image(img,0,0,width,height);
     fill(0);
     textSize(32);
     text("Écran 3 - Tu as récupère la sargasse", 100, 100);

@@ -2,15 +2,18 @@ import processing.sound.*;
 
 class Etat2 extends State {
   SoundFile file;
+  PImage img;
 
   int sargasseId = -1;
   int lastRequestTime = 0;  // Dernière fois où la requête a été envoyée.
-  
+
   Etat2(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
     super(sm, sh, ah,p);
     // Load a soundfile from the /data folder of the sketch and play it back
     file = new SoundFile(p, "Etat1.mp3");
     file.play();
+    img=loadImage("Etat2.jpg");
+
   }
 
   void onEnter() {
@@ -19,7 +22,7 @@ class Etat2 extends State {
   }
 
   void update() {
-    background(200, 255, 200);
+    image(img,0,0,width,height);
     fill(0);
     textSize(32);
     text("Écran 2 - Détection par la bouée, le pêcheur reçoit l'alerte", 100, 100);
