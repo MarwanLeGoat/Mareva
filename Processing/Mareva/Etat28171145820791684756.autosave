@@ -1,0 +1,26 @@
+class Etat2 extends State {
+  int sargasseId = -1;
+
+  Etat2(StateMachine sm, SerialHandler sh, ApiHandler ah) {
+    super(sm, sh, ah);
+  }
+
+  void onEnter() {
+    serialHandler.sendCommand("BOUEE_ON");
+    sargasseId = apiHandler.postDetection(2, 1); // Ajoute une sargasse
+  }
+
+  void update() {
+    background(200, 255, 200);
+    fill(0);
+    textSize(32);
+    text("Écran 2 - Détection par la bouée", 100, 100);
+
+    // Si capteur 2 activé -> passe à état 3
+    if (serialHandler.isActivated(2)) {
+      if (apiHandler.checkPecheur(sargasseId)) {
+        stateMachine.setState(new Etat3(stateMachine, serialHandler, apiHandler));
+      }
+    }
+  }
+}
