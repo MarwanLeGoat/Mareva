@@ -6,12 +6,8 @@ class Etat25 extends State {
 
   Etat25(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
     super(sm, sh, ah,p);
-    img=loadImage("Etat25.jpg");
+    img=loadImage("Etat3.png");
 
-  }
-
-  void onEnter() {
-    serialHandler.sendCommand("BOUEE_OFF");
   }
 
   void update() {

@@ -8,7 +8,7 @@ void setup() {
   apiHandler = new ApiHandler("http://mareva.aynos.net/api/detection");
   serialHandler = new SerialHandler(this, "COM4", 9600);
 
-  stateMachine.setState(new Etat1(stateMachine, serialHandler, apiHandler,this)); // Écran 1
+  stateMachine.setState(new Etat0(stateMachine, serialHandler, apiHandler,this)); // Écran 1
 }
 
 void draw() {

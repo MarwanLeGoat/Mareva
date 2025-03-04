@@ -6,7 +6,7 @@ class Etat3 extends State {
 
   Etat3(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
     super(sm, sh, ah,p);
-    img=loadImage("Etat3.jpg");
+    img=loadImage("Etat4.png");
 
   }
 

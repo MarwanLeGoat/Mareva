@@ -12,7 +12,7 @@ class Etat2 extends State {
     // Load a soundfile from the /data folder of the sketch and play it back
     file = new SoundFile(p, "Etat1.mp3");
     file.play();
-    img=loadImage("Etat2.jpg");
+    img=loadImage("Etat25.png");
 
   }
 

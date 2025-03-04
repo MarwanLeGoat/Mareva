@@ -9,7 +9,7 @@ class Etat5 extends State {
 
   Etat5(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
     super(sm, sh, ah,p);
-   img=loadImage("Etat5.jpg");
+   img=loadImage("Etat6.png");
 
   }
 
@@ -27,7 +27,7 @@ class Etat5 extends State {
   int currentTime = millis();
   if (currentTime - lastRequestTime > 10000) {
       lastRequestTime = currentTime;
-       stateMachine.setState(new Etat1(stateMachine, serialHandler, apiHandler,p));
+       stateMachine.setState(new Etat0(stateMachine, serialHandler, apiHandler,p));
 
   }
   }
