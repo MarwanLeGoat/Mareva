@@ -11,7 +11,7 @@ class ApiHandler {
   
   boolean deleteSargasse(){
     try {
-      DeleteRequest delete = new DeleteRequest(baseUrl + "/supprimer-detection/" + sargasseId);
+      DeleteRequest delete = new DeleteRequest(baseUrl + "/" + sargasseId);
       delete.send();
 
       println("[DELETE] Contenu de la réponse : " + delete.getContent());
@@ -64,7 +64,7 @@ class ApiHandler {
       if (responseCode == 200) {
         JSONObject json = parseJSONObject(get.getContent());
         if (json != null && json.hasKey("detection")) {
-          return json.getJSONObject("detection").hasKey("PecheurNom");
+          return json.getJSONObject("detection").getString("PecheurNom")!=null;
         }
       } else {
         println("[GET] Erreur : Code " + responseCode);
