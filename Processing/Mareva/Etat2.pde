@@ -28,7 +28,7 @@ class Etat2 extends State {
   if (currentTime - lastRequestTime > 500) {
       lastRequestTime = currentTime;
     // Si capteur 2 activé -> passe à état 3
-      if (!apiHandler.checkPecheur(sargasseId)) {
+      if (apiHandler.checkPecheur(sargasseId)) {
         stateMachine.setState(new Etat25(stateMachine, serialHandler, apiHandler,p));
       }
     }

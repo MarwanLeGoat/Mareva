@@ -19,7 +19,7 @@ class SerialHandler {
       String[] parts = split(line, ' ');
       if (parts.length == 2) {
         int sensorId = int(parts[0].split("_")[1]);
-        boolean activated = parts[1].equals("ACTIVÉ");
+        boolean activated = parts[1].equals("ACTIVE");
         sensorStates.put(sensorId, activated);
       }
     }
