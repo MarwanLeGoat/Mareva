@@ -111,7 +111,8 @@ function MapComponent() {
 
   useEffect(() => {
     const id = setInterval(() => {
-      fetchLocations(); // Charger les données initiales lors du premier rendu
+      
+    fetchLocations(); // Charger les données initiales lors du premier rendu
     }, 5000);
   }, []);
 
@@ -140,7 +141,7 @@ function MapComponent() {
   return (
     <MapContainer
       center={centerParis}
-      zoom={10}
+      zoom={8}
       maxBounds={[[15.707489,-62.105152],[16.683383,-60.657703]]}
       scrollWheelZoom={true}
       style={{ height: "100%", width: "100%" }}
