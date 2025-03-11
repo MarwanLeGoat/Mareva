@@ -3,7 +3,8 @@ import processing.sound.*;
 class Etat2 extends State {
   SoundFile file;
   PImage img;
-
+  PImage qrcode;
+  
   int sargasseId = -1;
   int lastRequestTime = 0;  // Dernière fois où la requête a été envoyée.
 
@@ -13,6 +14,11 @@ class Etat2 extends State {
     file = new SoundFile(p, "soft-alert.mp3");
     file.play();
     img=loadImage("Etat25.png");
+    
+    ZXING4P qrcoder = new ZXING4P();
+  
+    qrcode = qrcoder.generateQRCode(BASE_URL, 100, 100);
+    
 
   }
 
@@ -23,6 +29,8 @@ class Etat2 extends State {
 
   void update() {
     image(img,0,0,width,height);
+    image(qrcode,width-100,height-100,100,100);
+
     fill(0);
     textSize(32);
 

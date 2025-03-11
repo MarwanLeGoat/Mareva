@@ -5,7 +5,7 @@ Pour ce projet, nous avons décidé d'utiliser un affichage graphique sur un éc
 ## Prérequis
 
 - Une version à jour de Processing
-- Les plugins **Sound** (*The Processing Foundation*) et **HTTP Requests for Processing** installés
+- Les plugins **Sound** (*The Processing Foundation*), **HTTP Requests for Processing** et **Zxing For Processing (barcode library)** installés
 - Un Arduino avec le code du projet branché sur un port série ou alors l'émulateur d'Arduino du projet
 
 ## Configuration
