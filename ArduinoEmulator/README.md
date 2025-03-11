@@ -4,7 +4,7 @@ Pour des besoins de débug, nous avons crée un petit programme Python simulant 
 
 ## Prérequis
 
-- Pour pouvoir l'utiliser il faut faire un **pont entre deux ports série**. On peut utiliser différent logiciel mais sur Windows [Virtual Serial Port Tools](https://freevirtualserialports.com/) fonctionne bien.
+- Pour pouvoir l'utiliser il faut faire un **pont entre deux ports série**. On peut utiliser différent logiciel mais sur Windows [Virtual Serial Port Tools](https://freevirtualserialports.com/) fonctionne bien et `socat` pour Linux/MAC.
 - **Python** installé sur la machine
 - Installer les **dépendances Python** : `pip install -r requirements.txt`
 ## Utilisation
