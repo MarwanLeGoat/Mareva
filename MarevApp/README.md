@@ -23,11 +23,8 @@ MarevApp est l'application Web qui simule l'application du projet Mareva dans le
 git clone https://github.com/MarwanLeGoat/Mareva.git
 cd MarevApp
 ```
-2. Configurez les variables d'environnement :
-```sh
-cp MarevApp/.env.example MarevApp/.env
-```
-3. Lancez les services Docker :
+
+2. Lancez les services Docker :
 ```sh
 docker-compose up --build -d
 ```
