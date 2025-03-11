@@ -19,12 +19,12 @@ class Etat2 extends State {
   
     qrcode = qrcoder.generateQRCode(BASE_URL, 300, 300);
     
+    serialHandler.sendCommand("BOUEE_ON");
+    sargasseId = apiHandler.postDetection(2, 1); // Ajoute une sargasse
 
   }
 
   void onEnter() {
-    serialHandler.sendCommand("BOUEE_ON");
-    sargasseId = apiHandler.postDetection(2, 1); // Ajoute une sargasse
   }
 
   void update() {
