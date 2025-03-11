@@ -14,7 +14,6 @@ class Etat5 extends State {
   }
 
   void onEnter() {
-    serialHandler.sendCommand("CAMION_OFF");
     println("Fin de l'expérience...");
 
   }

@@ -13,6 +13,8 @@ class Etat3 extends State {
   void onEnter() {
     serialHandler.sendCommand("BOUEE_OFF");
     apiHandler.deleteSargasse();
+    serialHandler.sendCommand("CAMION_OFF");
+
   }
 
   void update() {

@@ -11,7 +11,6 @@ class Etat4 extends State {
   }
 
   void onEnter() {
-    serialHandler.sendCommand("CAMION_ON");
   }
 
   void update() {
