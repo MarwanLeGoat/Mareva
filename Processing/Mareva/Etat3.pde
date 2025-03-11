@@ -7,6 +7,8 @@ class Etat3 extends State {
   Etat3(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
     super(sm, sh, ah,p);
     img=loadImage("Etat4.png");
+    file = new SoundFile(p, "soft-bell.mp3");
+    file.play();
 
   }
 

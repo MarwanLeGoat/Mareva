@@ -1,6 +1,7 @@
   import processing.sound.*;
 
 class ErrorStateCamion extends State {
+  SoundFile file;
   PImage img;
   State callback;
   
@@ -13,6 +14,8 @@ class ErrorStateCamion extends State {
     super(sm, sh, ah,p);
     img=loadImage("ErrorStateCamion.png");
     callback = _callback;
+    file = new SoundFile(p, "soft-error.mp3");
+    file.play();
   }
       
   void update() {

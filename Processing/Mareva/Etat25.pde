@@ -8,6 +8,8 @@ class Etat25 extends State {
     super(sm, sh, ah,p);
     img=loadImage("Etat3.png");
     serialHandler.sendCommand("CAMION_ON");
+    file = new SoundFile(p, "soft-bell.mp3");
+    file.play();
 
   }
 

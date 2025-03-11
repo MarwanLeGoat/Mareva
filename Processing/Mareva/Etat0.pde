@@ -6,7 +6,9 @@ class Etat0 extends State {
   Etat0(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
     super(sm, sh, ah,p);
     img=loadImage("Etat1.png");
-    }
+    file = new SoundFile(p, "soft-bell.mp3");
+    file.play();
+  }
       
   void update() {
     image(img,0,0,width,height);
