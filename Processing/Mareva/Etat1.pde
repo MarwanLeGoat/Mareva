@@ -15,5 +15,11 @@ class Etat1 extends State {
     if (serialHandler.isActivated(1)) {
       stateMachine.setState(new Etat2(stateMachine, serialHandler, apiHandler,p));
     }
+    if (!serialHandler.isActivated(3)) {
+      stateMachine.setState(new ErrorStateBateau(stateMachine, serialHandler, apiHandler,p, this));
+    }
+    if (!serialHandler.isActivated(4)) {
+      stateMachine.setState(new ErrorStateCamion(stateMachine, serialHandler, apiHandler,p, this));
+    }
   }
 }
