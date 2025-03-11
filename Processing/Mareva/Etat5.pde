@@ -23,7 +23,6 @@ class Etat5 extends State {
     image(img,0,0,width,height);
     fill(0);
     textSize(32);
-    text("Écran 5 - Fin de l’expérience", 100, 100);
   int currentTime = millis();
   if (currentTime - lastRequestTime > 10000) {
       lastRequestTime = currentTime;

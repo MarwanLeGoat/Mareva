@@ -18,7 +18,6 @@ class Etat4 extends State {
     image(img,0,0,width,height);
     fill(0);
     textSize(32);
-    text("Écran 4 - Il faut emmener les sargasses vers l'usine de traitement", 100, 100);
 
     // Si capteur 5 activé -> passe à état 5
     if (serialHandler.isActivated(5)) {

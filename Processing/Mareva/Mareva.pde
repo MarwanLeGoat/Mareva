@@ -3,12 +3,14 @@ SerialHandler serialHandler;
 ApiHandler apiHandler;
 
 void setup() {
-  fullScreen(P2D);  // Mode plein écran avec accélération GPU
-  stateMachine = new StateMachine();
-  apiHandler = new ApiHandler("http://mareva.aynos.net/api/detection");
-  serialHandler = new SerialHandler(this, "COM4", 9600);
+  size(1920,1080);  // Mode fenêtré (debug)
+  //fullScreen(P2D);  // Mode plein écran
 
-  stateMachine.setState(new Etat0(stateMachine, serialHandler, apiHandler,this)); // Écran 1
+  stateMachine = new StateMachine();
+  apiHandler = new ApiHandler("http://mareva.aynos.net/api/detection"); // Remplacer "mareva.aynos.net" par le domaine / ip sur lequel est hébergé l'appli
+  serialHandler = new SerialHandler(this, "COM3", 9600); // Adapter le port COM3 en fonction de la machine (souvent entre COM2 et COM4)
+
+  stateMachine.setState(new Etat0(stateMachine, serialHandler, apiHandler,this)); 
 }
 
 void draw() {

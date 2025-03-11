@@ -10,7 +10,7 @@ class Etat2 extends State {
   Etat2(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
     super(sm, sh, ah,p);
     // Load a soundfile from the /data folder of the sketch and play it back
-    file = new SoundFile(p, "Etat1.mp3");
+    file = new SoundFile(p, "soft-alert.mp3");
     file.play();
     img=loadImage("Etat25.png");
 
@@ -25,7 +25,6 @@ class Etat2 extends State {
     image(img,0,0,width,height);
     fill(0);
     textSize(32);
-    text("Écran 2 - Détection par la bouée, le pêcheur reçoit l'alerte", 100, 100);
 
     int currentTime = millis();
   if (currentTime - lastRequestTime > 500) {
