@@ -20,7 +20,7 @@ MarevApp est l'application Web qui simule l'application du projet Mareva dans le
 
 1. Clonez le dépôt :
 ```sh
-git clone https://github.com/votre-utilisateur/MarevApp.git
+git clone https://github.com/MarwanLeGoat/Mareva.git
 cd MarevApp
 ```
 2. Configurez les variables d'environnement :
