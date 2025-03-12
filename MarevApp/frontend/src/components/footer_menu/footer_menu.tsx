@@ -18,7 +18,7 @@ const Navbar = ({toggleDrawer}) => {
   };
 
   const handleAppClick = () => {
-    window.location.href = "/Apps";
+    window.location.href = "/";
   };
 
 
