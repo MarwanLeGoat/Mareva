@@ -1,16 +1,18 @@
-import React, {useState, useEffect, useContext} from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import React, {useState, useEffect, useContext, useRef} from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { AntPath } from "leaflet-ant-path";
 import L from "leaflet";
 import "./MapComponent.css"
 import { useNotification } from '../NotificationProvider/NotificationProvider';
 
 
-import sargassicon from "../../img/Map_pin.svg";
+import sargassicon from "../../img/no_valid.svg";
 import boueeicon from "../../img/Bouee.svg";
-import sargassValidIcon from "../../img/Map_pin_valid.svg";
+import sargassValidIcon from "../../img/valid.svg";
 // Coordonnées de la Guadeloupe
 const centerParis = [16.265, -61.551];
+const port = [0,0];
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -30,6 +32,51 @@ const validIcon = L.icon({
   iconAnchor:[40,80],
   popupAnchor: [0,-70],
 })
+
+
+
+
+
+
+const AnimatedPaths = ({ locations }) => {
+  const map = useMap();
+  const pathLayers = useRef([]); // Stocke les chemins pour les supprimer plus tard
+
+  useEffect(() => {
+    if (!map) return;
+
+    // Supprimer les anciens chemins avant d'ajouter les nouveaux
+    pathLayers.current.forEach((layer) => map.removeLayer(layer));
+    pathLayers.current = [];
+
+    locations.forEach((loc) => {
+      if (loc.pecheur) {
+        const antPath = new L.polyline.antPath([[16.265, -61.551], [loc.latitude, loc.longitude]], {
+          delay: 800,
+          dashArray: [10, 20],
+          weight: 5,
+          color: "#FF0000",
+          pulseColor: "#FFFFFF",
+          paused: false,
+          reverse: false,
+          hardwareAccelerated: true,
+        });
+
+        antPath.addTo(map);
+        pathLayers.current.push(antPath); // Sauvegarde la référence pour pouvoir supprimer plus tard
+      }
+    });
+
+    return () => {
+      // Nettoyage : supprimer les lignes quand le composant est démonté ou mis à jour
+      pathLayers.current.forEach((layer) => map.removeLayer(layer));
+      pathLayers.current = [];
+    };
+  }, [locations, map]);
+
+  return null;
+};
+
 
 
 function MapComponent() {
@@ -159,7 +206,6 @@ function MapComponent() {
         <Marker key={loc.id} position={[loc.latitude, loc.longitude]} zoom={1} interactive={false} icon={boueeIcon}>
         </Marker>
       ))}
-      {console.log(locations)}
       {locations.map((loc) => (
         <Marker  key={loc.id} position={[loc.latitude, loc.longitude]} zoom={1} icon={loc.pecheur ? validIcon : customIcon}>
           <Popup >
@@ -174,7 +220,11 @@ function MapComponent() {
             </div>          
           </Popup>
         </Marker>
+        
+
       ))}
+        
+    <AnimatedPaths locations={locations} />
 
    </MapContainer>
   );
