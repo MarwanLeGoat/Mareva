@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7px" height="7px" viewBox="0 0 7 7" version="1.1">
+<defs>
+<image id="image15" width="7" height="7" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAABmJLR0QA/wD/AP+gvaeTAAAAmklEQVQImX3JMQ4BQRSA4f/NzFosEo0ohESi0nEVBxGNG7iLQziB7YROIioSBULYnd19Co3K137SH467mZp6YCp3DAOxukmTd+u4W29NbiNbMuFIpNiLFisyPZRduQ1grE8cwhwI+KqqMgMwmQtyQWJ+KEX8TU28t3YqsAJAZMmrsQBwRt3TP161a3aetKJOL839jfDSBE788wEjNDYb3kO61AAAAABJRU5ErkJggg=="/>
+<linearGradient id="linear0" gradientUnits="userSpaceOnUse" x1="3.797" y1="1.917" x2="3.797" y2="5.395" gradientTransform="matrix(1,0,0,1,-0.846,-0.971)">
+<stop offset="0" style="stop-color:rgb(100%,53.72549%,7.058824%);stop-opacity:1;"/>
+<stop offset="0.5" style="stop-color:rgb(96.470588%,68.627451%,29.411765%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(92.941176%,83.921569%,51.764706%);stop-opacity:1;"/>
+</linearGradient>
+<clipPath id="clip1">
+  <path d="M 2.28125 2 L 4.601562 2 L 4.601562 3 L 2.28125 3 Z M 2.28125 2 "/>
+</clipPath>
+<linearGradient id="linear1" gradientUnits="userSpaceOnUse" x1="3.755" y1="4.062" x2="3.755" y2="3.095" >
+<stop offset="0" style="stop-color:rgb(93.72549%,95.294118%,97.647059%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+</linearGradient>
+<clipPath id="clip2">
+  <path d="M 2.28125 2 L 4.601562 2 L 4.601562 3.679688 L 2.28125 3.679688 Z M 2.28125 2 "/>
+</clipPath>
+<linearGradient id="linear2" gradientUnits="userSpaceOnUse" x1="3.755" y1="4.642" x2="3.755" y2="3.675" >
+<stop offset="0" style="stop-color:rgb(93.72549%,95.294118%,97.647059%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+</linearGradient>
+</defs>
+<g id="surface1">
+<use xlink:href="#image15"/>
+<path style="fill-rule:nonzero;fill:rgb(14.117648%,17.647059%,23.529412%);fill-opacity:1;stroke-width:0.088;stroke-linecap:butt;stroke-linejoin:miter;stroke:url(#linear0);stroke-miterlimit:4;" d="M 2.949777 0.988281 C 3.887277 0.988281 4.643973 1.75 4.643973 2.683594 C 4.643973 3.621094 3.887277 4.378906 2.949777 4.378906 C 2.012277 4.378906 1.25558 3.621094 1.25558 2.683594 C 1.25558 1.75 2.012277 0.988281 2.949777 0.988281 Z M 2.949777 0.988281 " transform="matrix(1.166667,0,0,1,0,0)"/>
+<g clip-path="url(#clip1)" clip-rule="nonzero">
+<path style="fill:none;stroke-width:0.124;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 3.052473 3.490531 C 3.256714 3.490531 3.410732 3.240531 3.410732 3.240531 C 3.410732 3.240531 3.56475 3.490531 3.772339 3.490531 C 3.97658 3.490531 4.180821 3.240531 4.180821 3.240531 C 4.180821 3.240531 4.388411 3.490531 4.542429 3.490531 " transform="matrix(1.166667,0,0,1,-0.987,-0.971)"/>
+<path style="fill:none;stroke-width:0.124;stroke-linecap:round;stroke-linejoin:round;stroke:url(#linear1);stroke-miterlimit:4;" d="M 3.052473 3.490531 C 3.256714 3.490531 3.410732 3.240531 3.410732 3.240531 C 3.410732 3.240531 3.56475 3.490531 3.772339 3.490531 C 3.97658 3.490531 4.180821 3.240531 4.180821 3.240531 C 4.180821 3.240531 4.388411 3.490531 4.542429 3.490531 " transform="matrix(1.166667,0,0,1,-0.987,-0.971)"/>
+</g>
+<g clip-path="url(#clip2)" clip-rule="nonzero">
+<path style="fill:none;stroke-width:0.124;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 3.052473 4.068656 C 3.256714 4.068656 3.410732 3.822563 3.410732 3.822563 C 3.410732 3.822563 3.56475 4.072563 3.772339 4.072563 C 3.97658 4.072563 4.180821 3.822563 4.180821 3.822563 C 4.180821 3.822563 4.388411 4.072563 4.542429 4.072563 " transform="matrix(1.166667,0,0,1,-0.987,-0.971)"/>
+<path style="fill:none;stroke-width:0.124;stroke-linecap:round;stroke-linejoin:round;stroke:url(#linear2);stroke-miterlimit:4;" d="M 3.052473 4.068656 C 3.256714 4.068656 3.410732 3.822563 3.410732 3.822563 C 3.410732 3.822563 3.56475 4.072563 3.772339 4.072563 C 3.97658 4.072563 4.180821 3.822563 4.180821 3.822563 C 4.180821 3.822563 4.388411 4.072563 4.542429 4.072563 " transform="matrix(1.166667,0,0,1,-0.987,-0.971)"/>
+</g>
+</g>
+</svg>
