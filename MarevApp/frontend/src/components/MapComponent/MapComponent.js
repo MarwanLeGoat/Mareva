@@ -110,10 +110,13 @@ function MapComponent() {
   };
 
   useEffect(() => {
+    fetchLocations(); // Exécute immédiatement au chargement
+
     const id = setInterval(() => {
-      
-    fetchLocations(); // Charger les données initiales lors du premier rendu
+      fetchLocations(); // Ensuite, répète toutes les 5s
     }, 5000);
+
+    return () => clearInterval(id); // Nettoie l'intervalle si le composant est démonté
   }, []);
 
   const HandleClick = (id) => {
