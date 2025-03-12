@@ -4,6 +4,8 @@ import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 import threading
 import time
+import glob
+import platform
 
 # Configuration initiale
 serial_port = None
@@ -103,7 +105,15 @@ root.geometry("500x700")
 
 # Sélection du port série
 port_var = ttk.StringVar()
-ports = [port.device for port in serial.tools.list_ports.comports()]
+
+if platform.system() == "Windows":
+    ports = [port.device for port in serial.tools.list_ports.comports()]
+elif platform.system() == "Linux":
+    ports = glob.glob("/dev/pts/*")
+else:
+    ports = []
+
+
 port_dropdown = ttk.Combobox(root, textvariable=port_var, values=ports, state="readonly", bootstyle="primary")
 port_dropdown.pack(pady=10)
 
