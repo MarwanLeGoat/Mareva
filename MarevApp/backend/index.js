@@ -10,14 +10,32 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
+app.delete("/detection/all", (req,res)=>{
+  const deleteQuery = "DELETE FROM Detection WHERE 1=1";
+  pool.query(deleteQuery,[],(err,res)=>{
+    if (err){
+      console.error("Erreur lors de la suppression");
+      return res.status(500).json({error: "Erreur lors de la suppression"});
+    }
+    const deleteSQuery = "DELETE FROM Sargasse WHERE 1=1";
+    pool.query(deleteSQuery,[], (err,res)=>{
+      if (err){
+        console.error("Erreur lors de la suppression");
+        return res.status(500).json({error: "Erreur lors de la suppression"});
+      }
+      return res.status(200).json({message: "Suppression réussie!"});
+    })
+  })
+})
+
 
 app.delete("/detection/:id", (req,res)=>{
     const detectionId = req.params.id;
   const deleteQuery = "DELETE FROM Detection WHERE SargasseId=? ";
   pool.query(deleteQuery,[detectionId], (err, results)=>{
     if (err){
-      console.error("Erreur lors de la suppresion de la detection");
-      return res.status(500).json({error : "Erreur lors de la suppresion de la detection"});
+      console.error("Erreur lors de la suppression de la detection");
+      return res.status(500).json({error : "Erreur lors de la suppression de la detection"});
     }
     const deleteSQuery = "DELETE FROM Sargasse WHERE SargasseId=?";
     pool.query(deleteSQuery,[detectionId], (err,results)=>{
@@ -31,6 +49,7 @@ app.delete("/detection/:id", (req,res)=>{
   })
     
 })
+
 
 app.post('/detection/:id/pecheur', (req, res) => {
   const sargasseId = req.params.id; // ID de la sargasse
