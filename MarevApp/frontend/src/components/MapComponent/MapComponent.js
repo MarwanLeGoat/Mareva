@@ -55,7 +55,7 @@ const AnimatedPaths = ({ locations }) => {
           delay: 800,
           dashArray: [10, 20],
           weight: 5,
-          color: "#FF0000",
+          color: "#0000FF",
           pulseColor: "#FFFFFF",
           paused: false,
           reverse: false,
