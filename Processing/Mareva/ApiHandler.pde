@@ -24,6 +24,22 @@ class ApiHandler {
  
 
   }
+  
+  boolean deleteAllSargasses(){
+    try {
+      DeleteRequest delete = new DeleteRequest(baseUrl + "/all");
+      delete.send();
+
+      println("[DELETE] Contenu de la réponse : " + delete.getContent());
+
+      return true; 
+    } catch (Exception e) {
+      println("[DELETE] Exception : " + e.getMessage());
+      return false; // Retourne faux en cas d'échec
+    }
+ 
+
+  }
 
   int postDetection(int boueeId, int taille) {
     try {
