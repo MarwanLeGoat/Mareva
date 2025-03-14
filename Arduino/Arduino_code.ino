@@ -1,10 +1,10 @@
 // - 2 LED (Bouée, Camion) qu'on pilotera depuis Arduino 
-#define CAPTEUR_0 2
-#define CAPTEUR_1 3
-#define CAPTEUR_2 4
-#define CAPTEUR_3 5
-#define CAPTEUR_4 6
-#define CAPTEUR_5 7
+#define CAPTEUR_0 0
+#define CAPTEUR_1 1
+#define CAPTEUR_2 2
+#define CAPTEUR_3 3
+#define CAPTEUR_4 4
+#define CAPTEUR_5 5
 
 #define LED_BOUEE 8
 #define LED_CAMION 9
