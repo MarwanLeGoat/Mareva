@@ -29,3 +29,8 @@ cd MarevApp
 docker-compose up --build -d
 ```
 
+# Explication du fonctionnement
+
+![](./db_scheme.png)
+<center><i>Fig 1 : Modèle relationnel de la base de donnée</i></center>
+
