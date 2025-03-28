@@ -5,7 +5,7 @@ class SerialHandler {
   HashMap<Integer, Boolean> sensorStates = new HashMap<>();
 
   SerialHandler(PApplet parent, String port, int baudRate) {
-    serial = new Serial(parent, port, baudRate);
+      serial = new Serial(parent, port, baudRate);
     serial.bufferUntil('\n');  
     println(port + baudRate);
   }

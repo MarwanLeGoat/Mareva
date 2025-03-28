@@ -6,7 +6,7 @@ class Etat25 extends State {
 
   Etat25(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
     super(sm, sh, ah,p);
-    img=loadImage("Etat3.png");
+    img=loadImage("Etat5.png");
     serialHandler.sendCommand("CAMION_ON");
     file = new SoundFile(p, "soft-bell.mp3");
     file.play();
@@ -23,7 +23,7 @@ class Etat25 extends State {
       stateMachine.setState(new Etat3(stateMachine, serialHandler, apiHandler,p));
     }
     if (!serialHandler.isActivated(4)) {
-      stateMachine.setState(new ErrorStateCamion(stateMachine, serialHandler, apiHandler,p, this));
+     stateMachine.setState(new ErrorStateCamion(stateMachine, serialHandler, apiHandler,p, this));
     }
   }
 }

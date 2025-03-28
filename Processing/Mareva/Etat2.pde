@@ -13,7 +13,7 @@ class Etat2 extends State {
     // Load a soundfile from the /data folder of the sketch and play it back
     file = new SoundFile(p, "soft-alert.mp3");
     file.play();
-    img=loadImage("Etat25.png");
+    img=loadImage("Etat2.png");
     
     ZXING4P qrcoder = new ZXING4P();
   
@@ -29,7 +29,7 @@ class Etat2 extends State {
 
   void update() {
     image(img,0,0,width,height);
-    image(qrcode,width-300,100,300,300);
+    image(qrcode,width-130,height-200,100,100);
 
     fill(0);
     textSize(32);
@@ -45,10 +45,10 @@ class Etat2 extends State {
      }
      
     if (!serialHandler.isActivated(3)) {
-      stateMachine.setState(new ErrorStateBateau(stateMachine, serialHandler, apiHandler,p, this));
+     stateMachine.setState(new ErrorStateBateau(stateMachine, serialHandler, apiHandler,p, this));
     }
     if (!serialHandler.isActivated(4)) {
-      stateMachine.setState(new ErrorStateCamion(stateMachine, serialHandler, apiHandler,p, this));
+     stateMachine.setState(new ErrorStateCamion(stateMachine, serialHandler, apiHandler,p, this));
     }
   }
   

@@ -8,13 +8,13 @@ String BASE_URL="http://mareva.aynos.net";
 
 void setup() {
   //size(1920,1080);  // Mode fenêtré (debug)
-  fullScreen(P2D);  // Mode plein écran
+  fullScreen();  // Mode plein écran
   
   stateMachine = new StateMachine();
   apiHandler = new ApiHandler(BASE_URL+"/api/detection"); // Remplacer "mareva.aynos.net" par le domaine / ip sur lequel est hébergé l'appli
-  serialHandler = new SerialHandler(this, "COM4", 9600); // Adapter le port COM3 en fonction de la machine (souvent entre COM2 et COM4)
-
-  apiHandler.deleteAllSargasses();
+  serialHandler = new SerialHandler(this, "COM7", 9600); // Adapter le port COM3 en fonction de la machine (souvent entre COM2 et COM4)
+  
+//  apiHandler.deleteAllSargasses();
 
   stateMachine.setState(new Etat0(stateMachine, serialHandler, apiHandler,this)); 
 }

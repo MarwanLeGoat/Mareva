@@ -5,7 +5,7 @@ class Etat1 extends State {
   PImage img;
   Etat1(StateMachine sm, SerialHandler sh, ApiHandler ah,PApplet p) {
     super(sm, sh, ah,p);
-    img=loadImage("Etat2.png");
+    img=loadImage("Etat1.png");
     file = new SoundFile(p, "soft-bell.mp3");
     file.play();
     }
@@ -18,10 +18,10 @@ class Etat1 extends State {
       stateMachine.setState(new Etat2(stateMachine, serialHandler, apiHandler,p));
     }
     if (!serialHandler.isActivated(3)) {
-      stateMachine.setState(new ErrorStateBateau(stateMachine, serialHandler, apiHandler,p, this));
+     stateMachine.setState(new ErrorStateBateau(stateMachine, serialHandler, apiHandler,p, this));
     }
     if (!serialHandler.isActivated(4)) {
-      stateMachine.setState(new ErrorStateCamion(stateMachine, serialHandler, apiHandler,p, this));
+     stateMachine.setState(new ErrorStateCamion(stateMachine, serialHandler, apiHandler,p, this));
     }
   }
 }

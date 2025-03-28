@@ -12,7 +12,7 @@ class Etat5 extends State {
    img=loadImage("Etat6.png");
     file = new SoundFile(p, "soft-bell.mp3");
     file.play();
-
+    lastRequestTime = millis();
   }
 
   void onEnter() {
@@ -24,11 +24,11 @@ class Etat5 extends State {
     image(img,0,0,width,height);
     fill(0);
     textSize(32);
-  int currentTime = millis();
-  if (currentTime - lastRequestTime > 10000) {
-      lastRequestTime = currentTime;
-       stateMachine.setState(new Etat0(stateMachine, serialHandler, apiHandler,p));
-
-  }
+    int currentTime = millis();
+    if (currentTime - lastRequestTime > 30000) {
+        lastRequestTime = currentTime;
+         stateMachine.setState(new Etat0(stateMachine, serialHandler, apiHandler,p));
+  
+    }
   }
 }
